@@ -14,7 +14,7 @@ class SearchEngine:
 
         #Save to file
         with open('file_index.pkl' , 'wb') as f:    #Open as 'write binary'
-            pickle.dump(self.file, f)
+            pickle.dump(self.file_index, f)
 
 
     def load_existing_index(self):
@@ -54,3 +54,17 @@ class SearchEngine:
                 f.write(row + '\n')
 
 
+def test1():
+    s = SearchEngine()
+    s.create_new_index('F:/')
+    s.search('White')
+
+    print()
+    print('>> There were {:,d} matches out of {:,d} records searched'.format(s.matches , s.records))
+    print()
+    print('>> This query produced the following matches:')
+    for match in s.results:
+        print('   ' + match)
+    print()
+
+test1()
