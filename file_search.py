@@ -1,5 +1,25 @@
 import os
 import pickle
+import PySimpleGUI as sg
+
+class Gui:
+    def __init__(self):
+        self.layout = [[sg.Text('Search Term'), 
+                        sg.Input(), 
+                        sg.Radio('Contains', group_id='choice'), 
+                        sg.Radio('StartsWith', group_id='choice'), 
+                        sg.Radio('EndsWith', group_id='choice')],
+                       [sg.Text('Root Path'), 
+                        sg.Input(), 
+                        sg.FolderBrowse('Browse'), 
+                        sg.Button('Re-Index'), 
+                        sg.Button('Search')],
+                       [sg.Output(size=(100,30))] 
+                      ]
+
+        self.window = sg.Window('File Search Engine').Layout(self.layout)
+
+
 
 class SearchEngine:
     def __init__(self):
@@ -67,4 +87,11 @@ def test1():
         print('   ' + match)
     print()
 
-test1()
+
+def test2():
+    g = Gui()
+    g.window.Read()
+
+#test1()
+
+test2()
