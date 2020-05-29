@@ -1,19 +1,21 @@
 import os
 import pickle
 import PySimpleGUI as sg
+sg.ChangeLookAndFeel('Dark')
+
 
 class Gui:
     def __init__(self):
-        self.layout = [[sg.Text('Search Term'), 
-                        sg.Input(), 
+        self.layout = [[sg.Text('Search Term', size=(10,1)), 
+                        sg.Input(size=(45,1), focus=True), 
                         sg.Radio('Contains', group_id='choice'), 
                         sg.Radio('StartsWith', group_id='choice'), 
                         sg.Radio('EndsWith', group_id='choice')],
-                       [sg.Text('Root Path'), 
-                        sg.Input(), 
+                       [sg.Text('Root Path', size=(10,1)), 
+                        sg.Input('D:/', size=(45,1)), 
                         sg.FolderBrowse('Browse'), 
-                        sg.Button('Re-Index'), 
-                        sg.Button('Search')],
+                        sg.Button('Re-Index', size=(10,1)), 
+                        sg.Button('Search', size=(10,1), bind_return_key=True)],
                        [sg.Output(size=(100,30))] 
                       ]
 
